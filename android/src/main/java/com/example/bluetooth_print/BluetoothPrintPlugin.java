@@ -442,7 +442,9 @@ public class BluetoothPrintPlugin implements FlutterPlugin, ActivityAware, Metho
 
   @Override
   public boolean onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-
+    if(pendingResult == null){
+      return false;
+    }
     if (requestCode == REQUEST_FINE_LOCATION_PERMISSIONS) {
       if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
         startScan(pendingCall, pendingResult);
